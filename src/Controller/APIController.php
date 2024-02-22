@@ -20,7 +20,6 @@ class APIController extends AbstractController
  
     public function __construct(
         private HttpClientInterface $client,
-        private SerializerInterface $serializer,
         private Serialize $ser
     ) {
     }
@@ -29,8 +28,7 @@ class APIController extends AbstractController
     public function getLicencies():Response
     {
         $response = $this->client->request('GET', 'http://10.10.2.148/maisondesliguesAPI/public/index.php/api/licencies/');
-        $responseRawJson= $response->getContent();
-        $objJson= $this->ser->cleanResponse($responseRawJson);
+        $objJson= $this->ser->cleanResponse($response->getContent());
 
         return new Response($objJson);
     }
@@ -40,9 +38,7 @@ class APIController extends AbstractController
     {
         
         $response = $this->client->request('GET', 'http://10.10.2.148/maisondesliguesAPI/public/index.php/api/licencies/'.$id);
-        $responseRawJson= $response->getContent();
-        // dump($responseRawJson);
-        $objJson= $this->ser->cleanResponse($responseRawJson);
+        $objJson= $this->ser->cleanResponse($response->getContent());
 
         return new Response($objJson);
     }
@@ -51,9 +47,8 @@ class APIController extends AbstractController
     public function getClubs():Response
     {
         $response = $this->client->request('GET', 'http://10.10.2.148/maisondesliguesAPI/public/index.php/api/clubs/');
-        $responseRawJson= $response->getContent();
-        $objJson= $this->ser->cleanResponse($responseRawJson);
-
+        $objJson= $this->ser->cleanResponse($response->getContent());
+        
         return new Response($objJson);
     }
 
@@ -62,8 +57,7 @@ class APIController extends AbstractController
     public function getClub($id):Response
     {
         $response = $this->client->request('GET', 'http://10.10.2.148/maisondesliguesAPI/public/index.php/api/clubs/'.$id);
-        $responseRawJson= $response->getContent();
-        $objJson= $this->ser->cleanResponse($responseRawJson);
+        $objJson= $this->ser->cleanResponse($response->getContent());
 
         return new Response($objJson);
     }
@@ -73,8 +67,7 @@ class APIController extends AbstractController
     public function getQualites():Response
     {
         $response = $this->client->request('GET', 'http://10.10.2.148/maisondesliguesAPI/public/index.php/api/qualites/');
-        $responseRawJson= $response->getContent();
-        $objJson= $this->ser->cleanResponse($responseRawJson);
+        $objJson= $this->ser->cleanResponse($response->getContent());
 
         return new Response($objJson);
     }
@@ -84,8 +77,7 @@ class APIController extends AbstractController
     public function getQualite($id):Response
     {
         $response = $this->client->request('GET', 'http://10.10.2.148/maisondesliguesAPI/public/index.php/api/qualites/'.$id);
-        $responseRawJson= $response->getContent();
-        $objJson= $this->ser->cleanResponse($responseRawJson);
+        $objJson= $this->ser->cleanResponse($response->getContent());
 
         return new Response($objJson);
     }

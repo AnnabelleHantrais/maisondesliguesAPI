@@ -197,4 +197,30 @@ class Licencie
         return $this;
     }
 
+    public function getIdclub(): ?int
+    {
+        return $this->idclub;
+    }
+
+    public function setIdclub(int $idclub): static
+    {
+        $this->idclub = $idclub;
+
+        return $this;
+    }
+
+    public function getIdqualite(): ?int
+    {
+        return $this->idqualite;
+    }
+
+    public function setIdqualite(int $idqualite): static
+    {
+        $this->idqualite = $idqualite;
+
+        return $this;
+    }
+
+
+
 }
