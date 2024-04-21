@@ -15,15 +15,16 @@ use ApiPlatform\Metadata\GetCollection;
     new Get(),
     new GetCollection()]
     )
-    ]
+]
 class Licencie
 {
-    #[ORM\Id]
+  
     #[ORM\GeneratedValue]
     #[ORM\Column]
     #[Groups(['licencie:list', 'licencie:item'])]
     private ?int $id = null;
 
+    #[ORM\Id]
     #[ORM\Column]
     #[Groups(['licencie:list', 'licencie:item'])]
     private ?int $numlicence = null;

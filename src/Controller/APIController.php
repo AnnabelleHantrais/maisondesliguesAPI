@@ -33,16 +33,27 @@ class APIController extends AbstractController
         return new Response($objJson);
     }
     
-    #[Route('/licencie/{id}', name: 'app_licencies_id')]
-    public function getLicencie($id):Response
+
+
+    #[Route('/licencie/{numLicence}', name: 'app_licencies_numlicence')]
+    public function getLicencie(int $numLicence):Response
     {
-        
-        $response = $this->client->request('GET', 'http://10.10.2.148/maisondesliguesAPI/public/index.php/api/licencies/'.$id);
-        $objJson= $this->ser->cleanResponse($response->getContent());
+        $objJson='{}';
+
+        try{
+            $statusCode = $this->client->request('GET', 'http://10.10.2.148/maisondesliguesAPI/public/index.php/api/licencies/'. $numLicence)->getStatusCode();
+            if($statusCode!='404'){
+                $response = $this->client->request('GET', 'http://10.10.2.148/maisondesliguesAPI/public/index.php/api/licencies/'. $numLicence);
+                $objJson= $this->ser->cleanResponse($response->getContent());
+            }
+            
+        }catch(Exception $ex){  
+        }
 
         return new Response($objJson);
     }
-    
+
+   
      #[Route('/clubs', name: 'app_clubs')]
     public function getClubs():Response
     {
@@ -81,6 +92,9 @@ class APIController extends AbstractController
 
         return new Response($objJson);
     }
+    
+
+    
     
     
 }
