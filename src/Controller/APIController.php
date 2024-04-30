@@ -32,10 +32,11 @@ class APIController extends AbstractController
 
         return new Response($objJson);
     }
-    
 
 
-    #[Route('/licencie/{numLicence}', name: 'app_licencies_numlicence')]
+
+
+    #[Route('/licencie/{numLicence}', name: 'app_licencie_numlicence')]
     public function getLicencie(int $numLicence):Response
     {
         $objJson='{}';

@@ -25,7 +25,11 @@ class Serialize
         unset($decoded['@id']);
         unset($decoded['@type']);
 
-        $decoded['numlicence'] = strval($decoded['numlicence']);
+        if(isset($decoded['numlicence'])){
+            $decoded['numlicence'] = strval($decoded['numlicence']);
+        }
+        
+       
         
         $reencoded = json_encode($decoded);
 

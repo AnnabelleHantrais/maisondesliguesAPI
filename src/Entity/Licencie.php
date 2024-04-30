@@ -8,6 +8,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
+use ApiProperty;
 
 #[ORM\Entity(repositoryClass: LicencieRepository::class)]
 #[ApiResource (
@@ -18,14 +19,16 @@ use ApiPlatform\Metadata\GetCollection;
 ]
 class Licencie
 {
-  
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[ApiProperty(identifier: false)]
     #[Groups(['licencie:list', 'licencie:item'])]
     private ?int $id = null;
 
+
     #[ORM\Id]
-    #[ORM\Column]
+    #[ORM\Column(unique: true)]
+    #[ApiProperty(identifier: true)]
     #[Groups(['licencie:list', 'licencie:item'])]
     private ?int $numlicence = null;
 
